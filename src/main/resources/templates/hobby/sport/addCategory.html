@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj_kategorię</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+</head>
+
+<body class="registration_background">
+<div th:replace="fragments/header :: 'header'"></div>
+
+<div class="registration" >
+    <h1>Dodaj kategorię sportową</h1>
+    <form class="row g-3" th:action="@{/hobby/sport/addCategory}" th:object="${category}" method="post">
+        <input type="hidden" th:field="*{id}" />-
+        <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">Kategoria</label>
+            <input type="text" class="form-control" id="validationDefault01"required th:field="*{name}">
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Dodaj</button>
+        </div>
+
+    </form>
+</div>
+
+
+</body>
+</html>

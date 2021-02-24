@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+</head>
+
+<body class="calculator_background">
+<div th:replace="fragments/header :: 'header'"></div>
+
+<div class="registration">
+<h2 th:text="${error}"></h2>
+<form th:if="${bmi==null}" th:action="@{/health/bmiCalculator}" method="post" th:object="${bmiCalculator}">
+
+    <h1>Oblicz wskaźnik masy ciała</h1>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" value="woman" required th:field="*{gender}">
+        <label class="form-check-label" for="validationFormCheck2">Kobieta</label>
+    </div>
+    <div class="form-check mb-3">
+        <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" value="man" required th:field="*{gender}">
+        <label class="form-check-label" for="validationFormCheck3">Mężczyzna</label>
+        <div class="invalid-feedback">More example invalid feedback text</div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label">Waga</label>
+        <input type="text" class="form-control" id="validationDefault01" required th:field="*{weight}">
+    </div>
+    <div class="col-md-4">
+        <label for="validationDefault02" class="form-label">Wzrost (w cm)</label>
+        <input type="text" class="form-control" id="validationDefault02" required th:field="*{height}">
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Oblicz</button>
+    </div>
+
+</form>
+</div>
+</body>
+</html>
