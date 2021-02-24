@@ -16,7 +16,7 @@ public class BmiController {
     @GetMapping("/health/bmiCalculator")
     public String bmi(Model model) {
         model.addAttribute("bmiCalculator", new BmiCalculator());
-        return "/health/bmiCalculator";
+        return "health/bmiCalculator";
     }
 
     @PostMapping("/health/bmiCalculator")
@@ -25,10 +25,10 @@ public class BmiController {
                       Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Błędnie wypełniony formularz");
-            return "/health/bmiCalculator";
+            return "health/bmiCalculator";
         }
         model.addAttribute("bmi", 100 * 100 * bmiCalculator.getWeight() / (bmiCalculator.getHeight() * bmiCalculator.getHeight()));
-        return "/health/bmiResult";
+        return "health/bmiResult";
     }
 }
 
