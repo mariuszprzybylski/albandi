@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/hobby/sport/form")
-              //.permitAll()
+                //.permitAll()
                 .hasRole("ADMIN")
                 .and()
                 .formLogin().permitAll()
