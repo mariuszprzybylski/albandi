@@ -15,17 +15,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService(){
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
+        UserDetails adminDetails = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("admin")
                 .roles("ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(userDetails);
+        UserDetails userDetails = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("user")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(adminDetails, userDetails);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/hobby/**", "/health/**", "/post/**").access("hasRole('ADMIN')")
+//                .antMatchers("/hobby/sport/registration", "/hobby/sport/firstPage", "/hobby/sport/allCategory", "/health/**", "/post/**").access("hasRole('USER')")
+//                .and()
+//                .formLogin().loginPage("/")
+//                .defaultSuccessUrl("/hobby/sport/registration")
+//                .failureUrl("/hobby/sport/zz")
+//                .permitAll()
+//                .and()
+//                .logout().permitAll();
+//    }
         http
                 .csrf().disable()
                 .authorizeRequests()
@@ -33,7 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.permitAll()
                 .hasRole("ADMIN")
                 .and()
-                .formLogin().permitAll()
+                .formLogin().loginPage("/")
+                .defaultSuccessUrl("/hobby/sport/form")
+                .failureForwardUrl("/failLogin")
+                .permitAll()
                 .and()
                 .logout().permitAll();
     }
