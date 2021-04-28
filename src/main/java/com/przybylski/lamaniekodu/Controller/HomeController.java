@@ -24,9 +24,4 @@ public class HomeController {
          return "fragments/loginPageError";
     }
 
-
-
-
-
-
 }

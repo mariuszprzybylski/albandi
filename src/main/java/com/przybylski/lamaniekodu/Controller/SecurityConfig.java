@@ -32,19 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/hobby/**", "/health/**", "/post/**").access("hasRole('ADMIN')")
-//                .antMatchers("/hobby/sport/registration", "/hobby/sport/firstPage", "/hobby/sport/allCategory", "/health/**", "/post/**").access("hasRole('USER')")
-//                .and()
-//                .formLogin().loginPage("/")
-//                .defaultSuccessUrl("/hobby/sport/registration")
-//                .failureUrl("/hobby/sport/zz")
-//                .permitAll()
-//                .and()
-//                .logout().permitAll();
-//    }
         http
                 .csrf().disable()
                 .authorizeRequests()
