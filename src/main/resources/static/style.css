@@ -80,3 +80,18 @@ h2{
     margin-left: 50px;
     margin-right: 50px;
 }
+
+.mg-left{
+margin-left: 65px;
+}
+
+#stopka {
+	position: fixed;
+	height: 40px;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
